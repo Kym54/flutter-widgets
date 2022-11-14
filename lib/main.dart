@@ -1,47 +1,56 @@
 
 
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main(){
-  runApp( const WidgetApp());
+main(){
+  runApp(BoxConstraintsSample());
 }
 
-class WidgetApp extends StatelessWidget {
-  const WidgetApp({Key? key}) : super(key: key);
+class BoxConstraintsSample extends StatelessWidget {
+  const BoxConstraintsSample({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Learn About Different Widgets in Flutter',
-            style: TextStyle(
-              fontSize: 22,
-            ),
-          ),
-          backgroundColor: Color(
-            0125,
-          ),
-        ),
-        body: Column(
-          children: [
-            Text('Widgets can either be visible or invisible',
-            style: TextStyle(
-              fontSize: 22,
-            ),
-            ),
-            ElevatedButton(onPressed: null, child: Text(
-              'You have chosen answer !'
-            )),
-            ElevatedButton(onPressed: null, child: Text(
-              'you HAve Chosen Answer !'
-            )),
-            ElevatedButton(onPressed: null, child: Text('You Have chosen answer 1'))
-
-          ],
-        ),
-      ),
+    return const MaterialApp(
+      title: 'BoxConstraints Sample',
+      debugShowCheckedModeBanner: false,
+      home: BoxConstraintsSampleHome(),
     );
   }
 }
+class BoxConstraintsSampleHome extends StatelessWidget {
+  const BoxConstraintsSampleHome({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('BoxConstraints Sample'),
+      ),
+      body: Center(
+     child: Container(
+       color: Colors.redAccent,
+       padding: const EdgeInsets.all(20),
+       child: const Text(
+         'Box',
+         style: TextStyle(
+           fontFamily: 'Allison',
+           color: Colors.black38,
+           fontSize: 60,
+           fontWeight: FontWeight.bold,
+         ),
+       ),
+       constraints: const BoxConstraints(
+         minHeight: 70,
+         minWidth: 70,
+         maxHeight: 200,
+         maxWidth: 200,
+       ),
+     ),
+    ),
+    );
+  }
+}
+
